@@ -1,0 +1,9 @@
+To classify measures as additive, semi-additive, or non-additive, we can use the following definitions:
+
+1. **Additive Measures**: These measures can be summed across all dimensions. For example, sales revenue or quantity sold can be added together across different time periods, regions, or products.
+
+2. **Semi-Additive Measures**: These measures can be summed across some dimensions but not all. A common example is inventory levels, which can be summed across products or locations but not across time periods (since inventory levels at different times are not directly additive).
+
+3. **Non-Additive Measures**: These measures cannot be summed across any dimensions. An example would be ratios or percentages, such as profit margin or return on investment, which do not have a meaningful sum across different categories.
+
+If you have specific measures in mind, please provide them, and I can help classify them accordingly!
