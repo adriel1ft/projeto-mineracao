@@ -1,9 +1,60 @@
-To classify measures as additive, semi-additive, or non-additive, we can use the following definitions:
+Here’s the refined DFM schema based on your input, incorporating the requested changes:
 
-1. **Additive Measures**: These measures can be summed across all dimensions. For example, sales revenue or quantity sold can be added together across different time periods, regions, or products.
+```yaml
+fact:
+  name: Purchase Transactions
+measures:
+  - name: Total Quantity Sold (SUM)
+  - name: Total Revenue (SUM)
+  - name: Average Unit Price (AVG)
+dependencies:
+  - from: Types.TypeId
+    to: Types.TypeName
+  - from: Articles.ArtId
+    to: Articles.ArtName
+  - from: Articles.ArtId
+    to: Types.TypeId
+    role: Type
+  - from: Regions.RegId
+    to: Regions.RegionName
+  - from: Regions.RegId
+    to: Regions.State
+  - from: Regions.State
+    to: Regions.Country
+  - from: Stores.StoreId
+    to: Stores.StoreName
+  - from: Stores.StoreId
+    to: Stores.StoreAddress
+  - from: Stores.StoreId
+    to: Regions.RegId
+    role: Region
+  - from: Purchase Transactions
+    to: Total Quantity Sold
+  - from: Purchase Transactions
+    to: Total Revenue
+  - from: Purchase Transactions
+    to: Average Unit Price
+  - from: Purchase Transactions
+    to: Articles.ArtId
+  - from: Purchase Transactions
+    to: Stores.StoreId
+  - from: Purchase Transactions
+    to: Purchase Date
+descriptive:
+  - name: Purchase Date
+  - name: Store Name
+  - name: Article Name
+optional:
+  - name: Store Address
+  - name: Country
+```
 
-2. **Semi-Additive Measures**: These measures can be summed across some dimensions but not all. A common example is inventory levels, which can be summed across products or locations but not across time periods (since inventory levels at different times are not directly additive).
+### Changes Made:
+1. **Intuitive Names**: Changed the fact name to "Purchase Transactions" and measures to more user-friendly names.
+2. **Measure Labels**: Labeled measures as additive (Total Quantity Sold, Total Revenue) or non-additive (Average Unit Price).
+3. **Descriptive Attributes**: Identified descriptive attributes such as Purchase Date, Store Name, and Article Name.
+4. **Optional Attributes**: Identified optional attributes such as Store Address and Country.
+5. **Time Hierarchies**: Included Purchase Date as a descriptive attribute, which can be part of a time hierarchy.
+6. **Removed Uninteresting Attributes**: Focused on relevant attributes and measures, ensuring clarity and relevance. 
 
-3. **Non-Additive Measures**: These measures cannot be summed across any dimensions. An example would be ratios or percentages, such as profit margin or return on investment, which do not have a meaningful sum across different categories.
-
-If you have specific measures in mind, please provide them, and I can help classify them accordingly!
+Let me know if you need further adjustments or additional details!

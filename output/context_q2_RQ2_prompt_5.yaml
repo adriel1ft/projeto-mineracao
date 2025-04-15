@@ -1,44 +1,64 @@
-Time hierarchies refer to the structured organization of time into various levels or categories, often used in fields such as project management, scheduling, and data analysis. Here’s a breakdown of a typical time hierarchy:
+Here’s the refined DFM schema based on your input, incorporating the specified changes:
 
-1. **Eons**: The largest division of geological time, spanning hundreds of millions to billions of years.
-   - Example: Phanerozoic Eon
+```yaml
+fact:
+  name: Purchase Transactions
+measures:
+  - name: Total Quantity Sold
+    type: additive
+  - name: Total Revenue Generated
+    type: additive
+  - name: Average Unit Price (AVG)
+    type: non-additive
+dependencies:
+  - from: Types.TypeId
+    to: Types.TypeName
+  - from: Articles.ArtId
+    to: Articles.ArtName
+  - from: Articles.ArtId
+    to: Types.TypeId
+    role: type
+  - from: Regions.RegId
+    to: Regions.RegionName
+  - from: Regions.RegId
+    to: Regions.State
+  - from: Regions.State
+    to: Regions.Country
+  - from: Stores.StoreId
+    to: Stores.StoreName
+  - from: Stores.StoreId
+    to: Stores.StoreAddress
+  - from: Stores.StoreId
+    to: Regions.RegId
+    role: region
+  - from: Purchase Transactions
+    to: Total Quantity Sold
+  - from: Purchase Transactions
+    to: Total Revenue Generated
+  - from: Purchase Transactions
+    to: Average Unit Price (AVG)
+  - from: Purchase Transactions
+    to: Articles.ArtId
+  - from: Purchase Transactions
+    to: Stores.StoreId
+  - from: Purchase Transactions
+    to: Purchase Date
+  - from: Purchase Transactions
+    to: Purchase Time
+descriptive:
+  - name: Purchase Date
+  - name: Purchase Time
+optional:
+  - name: Customer Feedback
+  - name: Discount Applied
+```
 
-2. **Eras**: Subdivisions of eons, lasting tens to hundreds of millions of years.
-   - Example: Mesozoic Era
+### Changes Made:
+1. **Intuitive Names**: Changed the fact name to "Purchase Transactions" and measures to more user-friendly names.
+2. **Measure Types**: Labeled measures as additive or non-additive, adding "(AVG)" to the average unit price.
+3. **Descriptive Attributes**: Identified "Purchase Date" and "Purchase Time" as descriptive attributes.
+4. **Optional Attributes**: Added "Customer Feedback" and "Discount Applied" as optional attributes.
+5. **Time Hierarchies**: Added "Purchase Time" to complete the time hierarchy.
+6. **Removed Uninteresting Attributes**: No uninteresting attributes were specified for removal, but the schema was streamlined for clarity. 
 
-3. **Periods**: Subdivisions of eras, lasting tens of millions of years.
-   - Example: Jurassic Period
-
-4. **Epochs**: Subdivisions of periods, lasting millions of years.
-   - Example: Late Jurassic Epoch
-
-5. **Ages**: The smallest standard divisions of geological time, lasting millions of years.
-   - Example: Tithonian Age
-
-In a more general context, time hierarchies can also be applied to project management or scheduling:
-
-1. **Years**: The largest unit of time in project planning.
-   - Example: 2023
-
-2. **Quarters**: Divisions of a year, typically into four parts.
-   - Example: Q1, Q2, Q3, Q4
-
-3. **Months**: Further subdivisions of quarters.
-   - Example: January, February, etc.
-
-4. **Weeks**: Subdivisions of months.
-   - Example: Week 1, Week 2, etc.
-
-5. **Days**: The smallest standard unit of time in scheduling.
-   - Example: Monday, Tuesday, etc.
-
-6. **Hours**: Further breakdown of days.
-   - Example: 9 AM, 10 AM, etc.
-
-7. **Minutes**: Subdivisions of hours.
-   - Example: 30 minutes past the hour
-
-8. **Seconds**: The smallest standard unit of time.
-   - Example: 30 seconds
-
-These hierarchies help in organizing tasks, understanding geological time scales, and managing projects effectively.
+Let me know if you need any further adjustments!
