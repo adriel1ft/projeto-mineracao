@@ -1,0 +1,45 @@
+fact:
+  name: Purchase Transaction
+measures:
+  - name: Total Quantity Sold (ADD)
+  - name: Total Revenue (ADD)
+  - name: Average Unit Price (AVG)
+dependencies:
+  - from: ProductTypes.typeId
+    to: ProductTypes.typeName
+  - from: Articles.articleId
+    to: Articles.articleName
+  - from: Articles.articleId
+    to: ProductTypes.typeId
+    role: type
+  - from: Regions.regionId
+    to: Regions.regionName
+  - from: Regions.regionId
+    to: Regions.state
+  - from: Regions.state
+    to: Regions.country
+  - from: PurchaseTransaction
+    to: Total Quantity Sold
+  - from: PurchaseTransaction
+    to: Total Revenue
+  - from: PurchaseTransaction
+    to: Average Unit Price
+  - from: PurchaseTransaction
+    to: Articles.articleId
+  - from: PurchaseTransaction
+    to: Regions.regionId
+  - from: PurchaseTransaction
+    to: Regions.state
+  - from: PurchaseTransaction
+    to: Purchase Date
+  - from: PurchaseTransaction
+    to: Purchase Year
+  - from: PurchaseTransaction
+    to: Purchase Month
+  - from: PurchaseTransaction
+    to: Purchase Day
+descriptive:
+  - name: Purchase Date
+optional:
+  - name: Customer Feedback
+  - name: Discount Applied

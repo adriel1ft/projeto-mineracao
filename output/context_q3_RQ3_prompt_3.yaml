@@ -1,0 +1,29 @@
+fact:
+  name: rental_transactions
+measures:
+  - name: total_revenue
+  - name: total_units_sold
+  - name: average_discount (AVG)
+  - name: inventory_level (SUM-AVG)
+dependencies:
+  - from: total_revenue
+    to: rental_transactions
+  - from: total_units_sold
+    to: rental_transactions
+  - from: average_discount (AVG)
+    to: rental_transactions
+  - from: inventory_level (SUM-AVG)
+    to: rental_transactions
+  - from: date
+    to: rental_transactions
+  - from: rental_transactions
+    to: customer_id
+  - from: rental_transactions
+    to: product_id
+  - from: rental_transactions
+    to: location
+descriptive:
+  - name: customer_id
+  - name: product_id
+optional:
+  - name: location

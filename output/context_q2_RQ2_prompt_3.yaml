@@ -1,0 +1,48 @@
+fact:
+  name: PurchaseTransaction
+measures:
+  - name: TotalQuantitySold (ADD)
+  - name: TotalRevenue (ADD)
+  - name: AverageUnitPrice (AVG)
+dependencies:
+  - from: ProductTypes.typeId
+    to: ProductTypes.typeName
+  - from: Articles.articleId
+    to: Articles.articleName
+  - from: Articles.articleId
+    to: ProductTypes.typeId
+    role: type
+  - from: Regions.regionId
+    to: Regions.regionName
+  - from: Regions.regionId
+    to: Regions.state
+  - from: Regions.state
+    to: Regions.country
+  - from: Stores.storeId
+    to: Stores.storeName
+  - from: Stores.storeId
+    to: Stores.storeAddress
+  - from: Stores.storeId
+    to: Regions.regionId
+    role: region
+  - from: PurchaseTransaction
+    to: TotalQuantitySold
+  - from: PurchaseTransaction
+    to: TotalRevenue
+  - from: PurchaseTransaction
+    to: AverageUnitPrice
+  - from: PurchaseTransaction
+    to: Articles.articleId
+  - from: PurchaseTransaction
+    to: Stores.storeId
+  - from: PurchaseTransaction
+    to: PurchaseDate
+  - from: PurchaseTransaction
+    to: CustomerFeedback
+  - from: PurchaseTransaction
+    to: DiscountApplied
+descriptive:
+  - name: PurchaseDate
+optional:
+  - name: CustomerFeedback
+  - name: DiscountApplied

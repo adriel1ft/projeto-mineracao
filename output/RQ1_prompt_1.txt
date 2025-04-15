@@ -1,0 +1,27 @@
+The Dimensional Fact Model (DFM) is a framework used in data warehousing and business intelligence to organize and structure data for analysis. It is based on the principles of dimensional modeling, which focuses on making data intuitive and accessible for end-users. Here are some key features of the Dimensional Fact Model:
+
+1. **Fact Tables**: Central to the DFM, fact tables store quantitative data for analysis. They typically contain measurable, numeric data (facts) and foreign keys that link to dimension tables.
+
+2. **Dimension Tables**: These tables provide context to the facts. They contain descriptive attributes (dimensions) that help to categorize and filter the data in the fact tables. Examples include time, geography, product, and customer dimensions.
+
+3. **Star Schema**: A common design in DFM, where a central fact table is surrounded by dimension tables. This structure simplifies queries and improves performance.
+
+4. **Snowflake Schema**: An extension of the star schema where dimension tables are normalized into multiple related tables. This can reduce redundancy but may complicate queries.
+
+5. **Hierarchies**: Dimensions often contain hierarchies that allow users to drill down or roll up data. For example, a time dimension might have a hierarchy of year, quarter, month, and day.
+
+6. **Aggregates**: DFM supports pre-aggregated data to improve query performance. Aggregates can be created at various levels of granularity to speed up reporting.
+
+7. **Surrogate Keys**: Instead of using natural keys from operational systems, DFM often employs surrogate keys (unique identifiers) for dimension tables to ensure consistency and performance.
+
+8. **Slowly Changing Dimensions (SCD)**: DFM accommodates changes in dimension data over time. Different strategies (Type 1, Type 2, Type 3) are used to manage historical data and changes in attributes.
+
+9. **Factless Fact Tables**: These tables capture events or transactions without measurable facts. They are useful for tracking occurrences, such as attendance or inventory levels.
+
+10. **Data Granularity**: DFM emphasizes the level of detail in the fact tables, which can vary based on business needs. Higher granularity provides more detailed insights but may increase storage requirements.
+
+11. **Business Process Orientation**: The model is designed around specific business processes, making it easier for users to understand and analyze data relevant to their needs.
+
+12. **User-Friendly**: The DFM is designed to be intuitive for business users, allowing them to easily navigate and query data without needing extensive technical knowledge.
+
+These features collectively make the Dimensional Fact Model a powerful tool for organizing data in a way that supports effective analysis and decision-making in business environments.
